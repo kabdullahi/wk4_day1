@@ -79,7 +79,7 @@ Date Object
   "use strict";
 
   var todayIs;
-  todayIs = new Date;
+  todayIs = new Date();
 
 
   console.assert(todayIs == today, "#3 Test failed. Did you set the date correctly?");
@@ -101,12 +101,13 @@ Warm up
   const add = 2 + 2;
 
   //console.log(add);
+  console.log("inside function", add);
 })();
 //console.log(add);
+  console.log("outside function", add);
 /**************************************************************************************
 ------------ ANSWER -------------------
-console.log will equal to 4.....
-I believe its just adding the const
+
 **************************************************************************************/
 
 
@@ -123,20 +124,17 @@ Hoisting
 **************************************************************************************/
 (function(){
   "use strict";
-  var date = new Date(1983, 4, 21);
-  var birthday;
+  var birthday; "1983, 3, 21";
+  var date = new Date(birthday);
   var bdayMsg = function(){
-
-  bdayMsg();
-
     return "You were born on " + date.toDateString();
   }
+  bdayMsg();
   console.log("#5 bdayMsg()", bdayMsg());
   console.assert(bdayMsg() == "You were born on Thu Apr 21 1983", "#5 Test failed. Check function hoisting." )
 })();
 
 
-//My understading of hoisting is the order in which javascript reads, so I rearranged the above
 
 
 
@@ -149,10 +147,9 @@ Date object
 (function(testerTwo){
   "use strict";
   var today = new Date();
-
-  var stringDate;
-  stringDate = (new Date or "June 12, 2017"); // I dont know which formate your looking for so here is both
-
+  console.log("today:", "Hello" + today);
+  var stringDate = today.toString();
+  console.log("string:", "Hello" + stringDate);
   console.log("#6 stringDate", stringDate)
   console.assert(stringDate == testerTwo, "#6 Test Failed. Did you set stringDate correctly?")
 })(testerTwo);
@@ -177,16 +174,7 @@ Hoisting
 (function(){
   "use strict";
 
-  pizza.pizzaMkr();
-
   var pizza = {
-
-
-    sauceType: tomato;
-    protien: chicken;
-
-
-
     sauce: "",
     orderNow: "",
     pizzaMkr: function(){
@@ -198,6 +186,11 @@ Hoisting
       }
     }
   }
+  pizza.sauce = true;
+  pizaa.orderNow = true;
+  pizza.protein = "chicken";
+  pizza.sauceType = "tomato";
+  pizza.pizzaMkr();
 
   console.log("# 7 pizza.pizzaMrk()", pizza.pizzaMkr());
   console.assert(pizza.pizzaMkr() == "We are making your pizza with tomato and chicken. Pickup in 20 minutes.", "#7 Test failed. Did you add the propeties? Did you set the values correctly? Did you fix the hoisting issues?")
